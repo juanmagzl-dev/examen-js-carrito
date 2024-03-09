@@ -28,7 +28,7 @@ function mostrarCarrito(){
         ${item.nombre} x ${cantidad}
         <img src="${item.imagen}" class="img-fluid" alt="">
         <span>${(item.precio * cantidad).toFixed(2)}&euro;</span>
-        <button class="btn btn-primary" onclick="removeItem(${item.id}),alerta()">Eliminar</button>
+        <button class="btn btn-primary" onclick="removeItem(${item.id})">Eliminar</button>
     </div>
         `;
     }).join('')
@@ -62,14 +62,13 @@ document.getElementById('boton-vaciar').addEventListener('click', () => {
 
 // CONFIRM CANCELAR PRODUCTOS
 
-function alerta(){
-    var mensaje;
-    var opcion = confirm("¿Está seguro de eliminar el producto?");
-    if (opcion == true) {
-        mensaje = "Producto eliminado";
-	} else {
-        
-	     mensaje = "No se elimina";
-	}
-	
+function removeItem(itemId) {
+    const precio = items.find(item => item.id === itemId).precio; // PRECIO PRODUCTO PARA ELIMINAR
+    const confirmacion = confirm(`¿Estás seguro de que quieres eliminar ${items.find(item => item.id === itemId).nombre}?`);
+    if (confirmacion) {
+        total -= precio; // DECREMENTO DEL PRECIO TOTAL
+        if (--carrito[itemId] === 0) delete carrito[itemId]; // DECREMENTA EL PRECIO DEL PRODUCTO Y SI LLEGA A 0 SE ELIMINA
+        mostrarCarrito();
+    }
 }
+

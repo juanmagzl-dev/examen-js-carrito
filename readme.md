@@ -16,7 +16,7 @@
 
 > 1- Función mostrar los productos que están en el carrito. Utilizo dos decimales lo guardo en la variabe `let dosDec = total.toFixed(2);`.
 >
-> 2- Utilizo el método `Object.keys()` para obtener los IDs del objeto `const carrito = {}`.
+> 2- Utilizo el método `Object.keys()` para obtener los IDs del objeto `const carrito = {}`. -se utiliza para obtener un array que contiene las claves de un objeto. En otras palabras, devuelve un array con todas las propiedades enumerables de un objeto..
 >
 > 3- `const item = items.find(item => item.id == itemId);` aquí busco el itemId del json items utilizando el método `find()`, esto lo que hace es obtener información de cada producto.
 >
